@@ -9,6 +9,7 @@ public class Organization {
     private String NMNS;
     private String VMNS;
     private String CKODSOST;
+    private String VKODS;
 
     public String getVUNP() {
         return VUNP;
@@ -74,9 +75,17 @@ public class Organization {
         this.CKODSOST = CKODSOST;
     }
 
+    public String getVKODS() {
+        return VKODS;
+    }
+
+    public void setVKODS(String VKODS) {
+        this.VKODS = VKODS;
+    }
+
     @Override
     public String toString() {
-        return "Row{" +
+        return "Organization{" +
                 "VUNP='" + VUNP + '\'' +
                 ", VNAIMP='" + VNAIMP + '\'' +
                 ", VNAIMK='" + VNAIMK + '\'' +
@@ -85,6 +94,7 @@ public class Organization {
                 ", NMNS='" + NMNS + '\'' +
                 ", VMNS='" + VMNS + '\'' +
                 ", CKODSOST='" + CKODSOST + '\'' +
+                ", VKODS='" + VKODS + '\'' +
                 '}';
     }
 }
