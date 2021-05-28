@@ -14,7 +14,8 @@ public class JsonSimpleParser {
         JSONParser parser = new JSONParser();
         try (FileReader reader = new FileReader("src/main/java/getApiEgr/test2.json")) {
             JSONObject rowJsonObject = (JSONObject) parser.parse(reader);
-            String name = rowJsonObject.get("ROW").toString();
+            JSONObject rowJsonObject2 = (JSONObject) rowJsonObject.get("ROW");
+            String name = rowJsonObject2.get("VNAIMK").toString();
             row.getOrganization().setVNAIMK(name);
             return row;
         } catch (Exception e) {
