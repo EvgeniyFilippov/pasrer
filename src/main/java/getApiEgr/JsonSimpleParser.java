@@ -1,11 +1,10 @@
 package getApiEgr;
 
 import getApiEgr.model.Organization;
-import getApiEgr.model.Root;
 import getApiEgr.model.Row;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+import org.json.simple.parser.ParseException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,12 +29,20 @@ public class JsonSimpleParser {
     }
 
     public Row parseFromUrl(URL url) {
+        Organization organization = new Organization();
+        Row row = new Row(organization);
         StringBuilder stringBuilder = new StringBuilder();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
-
-        } catch (IOException e) {
+            String inputLine = in.readLine();
+            stringBuilder.append(inputLine);
+            JSONParser parser = new JSONParser();
+            JSONObject rowJsonObject = (JSONObject) parser.parse(inputLine);
+            JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
+            row.getOrganization().setVNAIMK(allFieldsOfOrganization.get("VNAIMK").toString());
+            row.getOrganization().setVKODS(allFieldsOfOrganization.get("VKODS").toString());
+        } catch (IOException | ParseException e) {
             System.out.println("Error get info from URL. " + e.getMessage());
         }
-        return null;
+        return row;
     }
 }
