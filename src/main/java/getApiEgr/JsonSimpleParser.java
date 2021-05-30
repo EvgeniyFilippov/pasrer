@@ -19,8 +19,7 @@ public class JsonSimpleParser {
         try (FileReader reader = new FileReader("src/main/java/getApiEgr/test2.json")) {
             JSONObject rowJsonObject = (JSONObject) parser.parse(reader);
             JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
-            row.getOrganization().setVNAIMK(allFieldsOfOrganization.get("VNAIMK").toString());
-            row.getOrganization().setVKODS(allFieldsOfOrganization.get("VKODS").toString());
+            row = fillingRow(allFieldsOfOrganization, row);
             return row;
         } catch (Exception e) {
             System.out.println("Error parsing: " + e.toString());
@@ -38,11 +37,16 @@ public class JsonSimpleParser {
             JSONParser parser = new JSONParser();
             JSONObject rowJsonObject = (JSONObject) parser.parse(inputLine);
             JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
-            row.getOrganization().setVNAIMK(allFieldsOfOrganization.get("VNAIMK").toString());
-            row.getOrganization().setVKODS(allFieldsOfOrganization.get("VKODS").toString());
+            row = fillingRow(allFieldsOfOrganization, row);
         } catch (IOException | ParseException e) {
             System.out.println("Error get info from URL. " + e.getMessage());
         }
+        return row;
+    }
+
+    public Row fillingRow(JSONObject allFieldsOfOrganization, Row row) {
+        row.getOrganization().setVNAIMK(allFieldsOfOrganization.get("VNAIMK").toString());
+        row.getOrganization().setVKODS(allFieldsOfOrganization.get("VKODS").toString());
         return row;
     }
 }
