@@ -8,7 +8,7 @@ import java.net.URL;
 public class Demo {
     public static void main(String[] args) {
         JsonSimpleParser jsonSimpleParser = new JsonSimpleParser();
-        Row row = jsonSimpleParser.parse();
+        Row row = jsonSimpleParser.parseFromFile();
         System.out.println("Наименование: " + row.getOrganization().getVNAIMK() + "\nСтатус: " + row.getOrganization().getVKODS() );
 
         JsonSimpleParser jsonSimpleParserUrl = new JsonSimpleParser();
