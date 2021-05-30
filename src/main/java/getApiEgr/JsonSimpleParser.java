@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 public class JsonSimpleParser {
-    public Row parse() {
+    public Row parseFromFile() {
         Organization organization = new Organization();
         Row row = new Row(organization);
         JSONParser parser = new JSONParser();
