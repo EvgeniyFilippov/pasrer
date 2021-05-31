@@ -1,100 +1,110 @@
 package getApiEgr.model;
 
 public class Organization {
-    private String VUNP;
-    private String VNAIMP;
-    private String VNAIMK;
-    private String VPADRES;
-    private String DREG;
-    private String NMNS;
-    private String VMNS;
-    private String CKODSOST;
-    private String VKODS;
+    private String unp;
+    private String fullName;
+    private String shortName;
+    private String address;
+    private String dateOfRegistration;
+    private String сodeOfTax;
+    private String nameOfTax;
+    private String state;
+    private String dateOfChange;
+    private String reasonOfChange;
 
-    public String getVUNP() {
-        return VUNP;
+    public String getUnp() {
+        return unp;
     }
 
-    public void setVUNP(String VUNP) {
-        this.VUNP = VUNP;
+    public void setUnp(String unp) {
+        this.unp = unp;
     }
 
-    public String getVNAIMP() {
-        return VNAIMP;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setVNAIMP(String VNAIMP) {
-        this.VNAIMP = VNAIMP;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getVNAIMK() {
-        return VNAIMK;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setVNAIMK(String VNAIMK) {
-        this.VNAIMK = VNAIMK;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public String getVPADRES() {
-        return VPADRES;
+    public String getAddress() {
+        return address;
     }
 
-    public void setVPADRES(String VPADRES) {
-        this.VPADRES = VPADRES;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getDREG() {
-        return DREG;
+    public String getDateOfRegistration() {
+        return dateOfRegistration;
     }
 
-    public void setDREG(String DREG) {
-        this.DREG = DREG;
+    public void setDateOfRegistration(String dateOfRegistration) {
+        this.dateOfRegistration = dateOfRegistration;
     }
 
-    public String getNMNS() {
-        return NMNS;
+    public String getСodeOfTax() {
+        return сodeOfTax;
     }
 
-    public void setNMNS(String NMNS) {
-        this.NMNS = NMNS;
+    public void setСodeOfTax(String сodeOfTax) {
+        this.сodeOfTax = сodeOfTax;
     }
 
-    public String getVMNS() {
-        return VMNS;
+    public String getNameOfTax() {
+        return nameOfTax;
     }
 
-    public void setVMNS(String VMNS) {
-        this.VMNS = VMNS;
+    public void setNameOfTax(String nameOfTax) {
+        this.nameOfTax = nameOfTax;
     }
 
-    public String getCKODSOST() {
-        return CKODSOST;
+    public String getState() {
+        return state;
     }
 
-    public void setCKODSOST(String CKODSOST) {
-        this.CKODSOST = CKODSOST;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getVKODS() {
-        return VKODS;
+    public String getDateOfChange() {
+        return dateOfChange;
     }
 
-    public void setVKODS(String VKODS) {
-        this.VKODS = VKODS;
+    public void setDateOfChange(String dateOfChange) {
+        this.dateOfChange = dateOfChange;
+    }
+
+    public String getReasonOfChange() {
+        return reasonOfChange;
+    }
+
+    public void setReasonOfChange(String reasonOfChange) {
+        this.reasonOfChange = reasonOfChange;
     }
 
     @Override
     public String toString() {
         return "Organization{" +
-                "VUNP='" + VUNP + '\'' +
-                ", VNAIMP='" + VNAIMP + '\'' +
-                ", VNAIMK='" + VNAIMK + '\'' +
-                ", VPADRES='" + VPADRES + '\'' +
-                ", DREG='" + DREG + '\'' +
-                ", NMNS='" + NMNS + '\'' +
-                ", VMNS='" + VMNS + '\'' +
-                ", CKODSOST='" + CKODSOST + '\'' +
-                ", VKODS='" + VKODS + '\'' +
+                "unp='" + unp + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", shortName='" + shortName + '\'' +
+                ", address='" + address + '\'' +
+                ", dateOfRegistration='" + dateOfRegistration + '\'' +
+                ", сodeOfTax='" + сodeOfTax + '\'' +
+                ", nameOfTax='" + nameOfTax + '\'' +
+                ", state='" + state + '\'' +
+                ", dateOfChange='" + dateOfChange + '\'' +
+                ", reasonOfChange='" + reasonOfChange + '\'' +
                 '}';
     }
 }
