@@ -45,16 +45,26 @@ public class JsonSimpleParser {
     }
 
     public Row fillingRow(JSONObject allFieldsOfOrganization, Row row) {
-        row.getOrganization().setUnp(allFieldsOfOrganization.get("VUNP").toString());
-        row.getOrganization().setFullName(allFieldsOfOrganization.get("VNAIMP").toString());
-        row.getOrganization().setShortName(allFieldsOfOrganization.get("VNAIMK").toString());
-        row.getOrganization().setAddress(allFieldsOfOrganization.get("VPADRES").toString());
-        row.getOrganization().setDateOfRegistration(allFieldsOfOrganization.get("DREG").toString());
-        row.getOrganization().setСodeOfTax(allFieldsOfOrganization.get("NMNS").toString());
-        row.getOrganization().setNameOfTax(allFieldsOfOrganization.get("VMNS").toString());
-        row.getOrganization().setState(allFieldsOfOrganization.get("VKODS").toString());
-        row.getOrganization().setDateOfChange(allFieldsOfOrganization.get("DLIKV").toString());
-        row.getOrganization().setReasonOfChange(allFieldsOfOrganization.get("VLIKV").toString());
+        row.getOrganization().setUnp(getValueFromJsonObject(allFieldsOfOrganization, "VUNP"));
+        row.getOrganization().setFullName(getValueFromJsonObject(allFieldsOfOrganization, "VNAIMP"));
+        row.getOrganization().setShortName(getValueFromJsonObject(allFieldsOfOrganization, "VNAIMK"));
+        row.getOrganization().setAddress(getValueFromJsonObject(allFieldsOfOrganization, "VPADRES"));
+        row.getOrganization().setDateOfRegistration(getValueFromJsonObject(allFieldsOfOrganization, "DREG"));
+        row.getOrganization().setСodeOfTax(getValueFromJsonObject(allFieldsOfOrganization, "NMNS"));
+        row.getOrganization().setNameOfTax(getValueFromJsonObject(allFieldsOfOrganization, "VMNS"));
+        row.getOrganization().setState(getValueFromJsonObject(allFieldsOfOrganization, "VKODS"));
+        row.getOrganization().setDateOfChange(getValueFromJsonObject(allFieldsOfOrganization, "DLIKV"));
+        row.getOrganization().setReasonOfChange(getValueFromJsonObject(allFieldsOfOrganization, "VLIKV"));
         return row;
+    }
+
+    public String getValueFromJsonObject(JSONObject allFieldsOfOrganization, String key) {
+        String value = "";
+        if (allFieldsOfOrganization.get(key) != null) {
+            value = allFieldsOfOrganization.get(key).toString();
+        } else {
+            value = "Нет данных";
+        }
+        return value;
     }
 }
