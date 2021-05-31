@@ -7,9 +7,9 @@ import java.net.URL;
 
 public class Demo {
     public static void main(String[] args) {
-        JsonSimpleParser jsonSimpleParser = new JsonSimpleParser();
-        Row row = jsonSimpleParser.parseFromFile();
-        System.out.println("Наименование: " + row.getOrganization().getVNAIMK() + "\nСтатус: " + row.getOrganization().getVKODS() );
+//        JsonSimpleParser jsonSimpleParser = new JsonSimpleParser();
+//        Row row = jsonSimpleParser.parseFromFile();
+//        System.out.println("Наименование: " + row.getOrganization().getShortName() + "\nСтатус: " + row.getOrganization().getState() );
 
         JsonSimpleParser jsonSimpleParserUrl = new JsonSimpleParser();
         URL url = null;
@@ -19,6 +19,6 @@ public class Demo {
             e.printStackTrace();
         }
         Row rowUrl = jsonSimpleParserUrl.parseFromUrl(url);
-        System.out.println("Наименование: " + rowUrl.getOrganization().getVNAIMK() + "\nСтатус: " + rowUrl.getOrganization().getVKODS() );
+        System.out.println("Наименование: " + rowUrl.getOrganization().getShortName() + "\nСтатус: " + rowUrl.getOrganization().getState() );
     }
 }
