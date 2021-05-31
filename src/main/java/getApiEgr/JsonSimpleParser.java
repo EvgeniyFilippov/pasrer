@@ -45,8 +45,16 @@ public class JsonSimpleParser {
     }
 
     public Row fillingRow(JSONObject allFieldsOfOrganization, Row row) {
-        row.getOrganization().setVNAIMK(allFieldsOfOrganization.get("VNAIMK").toString());
-        row.getOrganization().setVKODS(allFieldsOfOrganization.get("VKODS").toString());
+        row.getOrganization().setUnp(allFieldsOfOrganization.get("VUNP").toString());
+        row.getOrganization().setFullName(allFieldsOfOrganization.get("VNAIMP").toString());
+        row.getOrganization().setShortName(allFieldsOfOrganization.get("VNAIMK").toString());
+        row.getOrganization().setAddress(allFieldsOfOrganization.get("VPADRES").toString());
+        row.getOrganization().setDateOfRegistration(allFieldsOfOrganization.get("DREG").toString());
+        row.getOrganization().setСodeOfTax(allFieldsOfOrganization.get("NMNS").toString());
+        row.getOrganization().setNameOfTax(allFieldsOfOrganization.get("VMNS").toString());
+        row.getOrganization().setState(allFieldsOfOrganization.get("VKODS").toString());
+        row.getOrganization().setDateOfChange(allFieldsOfOrganization.get("DLIKV").toString());
+        row.getOrganization().setReasonOfChange(allFieldsOfOrganization.get("VLIKV").toString());
         return row;
     }
 }
