@@ -1,6 +1,7 @@
 package getApiEgr;
 
 import getApiEgr.model.Row;
+import org.json.simple.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,7 +19,10 @@ public class Demo {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        Row rowUrl = jsonSimpleParserUrl.parseFromUrl(url);
-        System.out.println("Наименование: " + rowUrl.getOrganization().getShortName() + "\nСтатус: " + rowUrl.getOrganization().getState() );
+        JSONObject finishJsonObject = jsonSimpleParserUrl.parseFromUrl(url);
+        Row row = jsonSimpleParserUrl.fillingRow(finishJsonObject);
+
+
+        System.out.println("Наименование: " + row.getOrganization().getShortName() + "\nСтатус: " + row.getOrganization().getState() );
     }
 }
