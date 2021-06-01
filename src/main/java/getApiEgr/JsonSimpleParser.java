@@ -12,56 +12,56 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 public class JsonSimpleParser {
-    public Row parseFromFile() {
-        Organization organization = new Organization();
-        Row row = new Row(organization);
-        JSONParser parser = new JSONParser();
-        try (FileReader reader = new FileReader("src/main/java/getApiEgr/test2.json")) {
-            JSONObject rowJsonObject = (JSONObject) parser.parse(reader);
-            JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
-            row = fillingRow(allFieldsOfOrganization, row);
-            return row;
-        } catch (Exception e) {
-            System.out.println("Error parsing: " + e.toString());
-        }
-        return null;
-    }
+//    public Row parseFromFile() {
+//        Organization organization = new Organization();
+//        Row row = new Row(organization);
+//        JSONParser parser = new JSONParser();
+//        try (FileReader reader = new FileReader("src/main/java/getApiEgr/test2.json")) {
+//            JSONObject rowJsonObject = (JSONObject) parser.parse(reader);
+//            JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
+//            row = fillingRow(allFieldsOfOrganization, row);
+//            return row;
+//        } catch (Exception e) {
+//            System.out.println("Error parsing: " + e.toString());
+//        }
+//        return null;
+//    }
 
-    public Row parseFromUrl(URL url) {
-        Organization organization = new Organization();
-        Row row = new Row(organization);
+    public JSONObject parseFromUrl(URL url) {
         StringBuilder stringBuilder = new StringBuilder();
+        JSONObject finishJsonObject = new JSONObject();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
             String inputLine = in.readLine();
             stringBuilder.append(inputLine);
             JSONParser parser = new JSONParser();
-            JSONObject rowJsonObject = (JSONObject) parser.parse(inputLine);
-            JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
-            row = fillingRow(allFieldsOfOrganization, row);
+            JSONObject jsonObject = (JSONObject) parser.parse(inputLine);
+            finishJsonObject = (JSONObject) jsonObject.get("ROW");
         } catch (IOException | ParseException e) {
             System.out.println("Error get info from URL. " + e.getMessage());
         }
+        return finishJsonObject;
+    }
+
+    public Row fillingRow(JSONObject finishJsonObject) {
+        Organization organization = new Organization();
+        Row row = new Row(organization);
+        row.getOrganization().setUnp(getValueFromJsonObject(finishJsonObject, "VUNP"));
+        row.getOrganization().setFullName(getValueFromJsonObject(finishJsonObject, "VNAIMP"));
+        row.getOrganization().setShortName(getValueFromJsonObject(finishJsonObject, "VNAIMK"));
+        row.getOrganization().setAddress(getValueFromJsonObject(finishJsonObject, "VPADRES"));
+        row.getOrganization().setDateOfRegistration(getValueFromJsonObject(finishJsonObject, "DREG"));
+        row.getOrganization().setСodeOfTax(getValueFromJsonObject(finishJsonObject, "NMNS"));
+        row.getOrganization().setNameOfTax(getValueFromJsonObject(finishJsonObject, "VMNS"));
+        row.getOrganization().setState(getValueFromJsonObject(finishJsonObject, "VKODS"));
+        row.getOrganization().setDateOfChange(getValueFromJsonObject(finishJsonObject, "DLIKV"));
+        row.getOrganization().setReasonOfChange(getValueFromJsonObject(finishJsonObject, "VLIKV"));
         return row;
     }
 
-    public Row fillingRow(JSONObject allFieldsOfOrganization, Row row) {
-        row.getOrganization().setUnp(getValueFromJsonObject(allFieldsOfOrganization, "VUNP"));
-        row.getOrganization().setFullName(getValueFromJsonObject(allFieldsOfOrganization, "VNAIMP"));
-        row.getOrganization().setShortName(getValueFromJsonObject(allFieldsOfOrganization, "VNAIMK"));
-        row.getOrganization().setAddress(getValueFromJsonObject(allFieldsOfOrganization, "VPADRES"));
-        row.getOrganization().setDateOfRegistration(getValueFromJsonObject(allFieldsOfOrganization, "DREG"));
-        row.getOrganization().setСodeOfTax(getValueFromJsonObject(allFieldsOfOrganization, "NMNS"));
-        row.getOrganization().setNameOfTax(getValueFromJsonObject(allFieldsOfOrganization, "VMNS"));
-        row.getOrganization().setState(getValueFromJsonObject(allFieldsOfOrganization, "VKODS"));
-        row.getOrganization().setDateOfChange(getValueFromJsonObject(allFieldsOfOrganization, "DLIKV"));
-        row.getOrganization().setReasonOfChange(getValueFromJsonObject(allFieldsOfOrganization, "VLIKV"));
-        return row;
-    }
-
-    public String getValueFromJsonObject(JSONObject allFieldsOfOrganization, String key) {
+    public String getValueFromJsonObject(JSONObject finishJsonObject, String key) {
         String value = "";
-        if (allFieldsOfOrganization.get(key) != null) {
-            value = allFieldsOfOrganization.get(key).toString();
+        if (finishJsonObject.get(key) != null) {
+            value = finishJsonObject.get(key).toString();
         } else {
             value = "Нет данных";
         }
