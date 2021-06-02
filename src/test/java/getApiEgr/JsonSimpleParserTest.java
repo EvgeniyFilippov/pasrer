@@ -1,8 +1,6 @@
 package getApiEgr;
 
 import junit.framework.TestCase;
-import org.json.simple.JSONObject;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
