@@ -23,6 +23,6 @@ public class Demo {
         Row row = jsonSimpleParserUrl.fillingRow(finishJsonObject);
 
 
-        System.out.println("Наименование: " + row.getOrganization().getShortName() + "\nСтатус: " + row.getOrganization().getState() );
+        System.out.printf("Краткое наименование: %s\nПолное наименование: %s\nСтатус: %s\nУНП: %s\nДата изменения состояния: %s", row.getOrganization().getShortName(), row.getOrganization().getFullName(), row.getOrganization().getState(), row.getOrganization().getUnp(), row.getOrganization().getDateOfChange());
     }
 }
