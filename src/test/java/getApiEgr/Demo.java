@@ -2,7 +2,6 @@ package getApiEgr;
 
 import getApiEgr.model.Row;
 import org.json.simple.JSONObject;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
