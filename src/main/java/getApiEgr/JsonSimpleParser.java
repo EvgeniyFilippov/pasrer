@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class JsonSimpleParser {
@@ -27,7 +28,13 @@ public class JsonSimpleParser {
 //        return null;
 //    }
 
-    public JSONObject parseFromUrl(URL url) {
+    public JSONObject parseFromUrl(int unp) {
+        URL url = null;
+        try {
+            url = new URL("http://www.portal.nalog.gov.by/grp/getData?unp=" + unp + "&charset=UTF-8&type=json");
+        } catch (MalformedURLException e) {
+            System.out.println("Error url" + e.getMessage());
+        }
         StringBuilder stringBuilder = new StringBuilder();
         JSONObject finishJsonObject = new JSONObject();
         try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
