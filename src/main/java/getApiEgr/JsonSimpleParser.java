@@ -16,7 +16,7 @@ public class JsonSimpleParser {
 //        Organization organization = new Organization();
 //        Row row = new Row(organization);
 //        JSONParser parser = new JSONParser();
-//        try (FileReader reader = new FileReader("src/main/java/getApiEgr/test2.json")) {
+//        try (FileReader reader = new FileReader("src/main/java/getApiEgr/test.json")) {
 //            JSONObject rowJsonObject = (JSONObject) parser.parse(reader);
 //            JSONObject allFieldsOfOrganization = (JSONObject) rowJsonObject.get("ROW");
 //            row = fillingRow(allFieldsOfOrganization, row);
