@@ -14,7 +14,6 @@ public class Demo {
         JsonSimpleParser jsonSimpleParserUrl = new JsonSimpleParser();
         JSONObject finishJsonObject = jsonSimpleParserUrl.parseFromUrl(192945049);
         Row row = jsonSimpleParserUrl.fillingRow(finishJsonObject);
-
         System.out.printf("Краткое наименование: %s\nПолное наименование: %s\nСтатус: %s\nУНП: %s\nДата изменения состояния: %s", row.getOrganization().getShortName(), row.getOrganization().getFullName(), row.getOrganization().getState(), row.getOrganization().getUnp(), row.getOrganization().getDateOfChange());
     }
 }
