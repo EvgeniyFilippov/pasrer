@@ -21,8 +21,8 @@ public class Demo {
         } else {
             System.out.println(AnsiColorCode.FG_RED_BOLD_BRIGHT + row.getOrganization().getState() + AnsiColorCode.RESET);
         }
-        System.out.printf("Полное наименование: %s\nСтатус: %s\nУНП: %s\nДата изменения состояния: %s",
-                row.getOrganization().getFullName(), row.getOrganization().getState(),
+        System.out.printf("Полное наименование: %s\nУНП: %s\nДата изменения состояния: %s",
+                row.getOrganization().getFullName(),
                 row.getOrganization().getUnp(), row.getOrganization().getDateOfChange());
     }
 }
