@@ -21,8 +21,10 @@ public class Demo {
         } else {
             System.out.println(AnsiColorCode.FG_RED_BOLD_BRIGHT + row.getOrganization().getState() + AnsiColorCode.RESET);
         }
-        System.out.printf("Полное наименование: %s\nУНП: %s\nДата изменения состояния: %s",
+        System.out.printf("Полное наименование: %s\nУНП: %s\nАдрес: %s\nДата регистрации: %s\nКод МНС: %s\nНаименования МНС: %s\nДата изменения состояния: %s\nПричина изменения: %s",
                 row.getOrganization().getFullName(),
-                row.getOrganization().getUnp(), row.getOrganization().getDateOfChange());
+                row.getOrganization().getUnp(), row.getOrganization().getAddress(), row.getOrganization().getDateOfRegistration(),
+                row.getOrganization().getСodeOfTax(), row.getOrganization().getNameOfTax(),
+                row.getOrganization().getDateOfChange(), row.getOrganization().getReasonOfChange());
     }
 }
